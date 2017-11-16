@@ -1,6 +1,7 @@
 package io.github.biezhi.mapper;
 
-import com.github.pagehelper.PageInterceptor;
+//import com.github.pagehelper.PageInterceptor;
+import com.github.pagehelper.PaginationInterceptor;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -53,7 +54,25 @@ public class PageHelperAutoConfiguration implements EnvironmentAware {
     @PostConstruct
     public void addPageInterceptor() {
         log.info("Setting PageInterceptor");
-        PageInterceptor interceptor = new PageInterceptor();
+        /*PaginationInterceptor interceptor = new PaginationInterceptor();
+
+        Properties properties = pageHelperProperties.getProperties();
+        properties.setProperty("dialect", "mysql");
+        properties.setProperty("offsetAsPageNum", "true");
+        properties.setProperty("rowBoundsWithCount", "true");
+        properties.setProperty("pageSizeZero", "true");
+        properties.setProperty("reasonable", "true");
+        Map<String, Object> subProperties = resolver.getSubProperties("");
+        for (String key : subProperties.keySet()) {
+            if (!properties.containsKey(key)) {
+                properties.setProperty(key, resolver.getProperty(key));
+            }
+        }
+        interceptor.setProperties(properties);
+        for (SqlSessionFactory sqlSessionFactory : sqlSessionFactoryList) {
+            sqlSessionFactory.getConfiguration().addInterceptor(interceptor);
+        }*/
+        /*PageInterceptor interceptor = new PageInterceptor();
         Properties properties = pageHelperProperties.getProperties();
         Map<String, Object> subProperties = resolver.getSubProperties("");
         for (String key : subProperties.keySet()) {
@@ -64,7 +83,7 @@ public class PageHelperAutoConfiguration implements EnvironmentAware {
         interceptor.setProperties(properties);
         for (SqlSessionFactory sqlSessionFactory : sqlSessionFactoryList) {
             sqlSessionFactory.getConfiguration().addInterceptor(interceptor);
-        }
+        }*/
     }
 
     @Override
